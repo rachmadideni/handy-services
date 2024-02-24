@@ -1,10 +1,20 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import ServicesProvider from "./provider/services.tsx";
+import { RouterProvider } from "react-router-dom";
+import router from "./router";
+import "./index.css";
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+const MainApp = () => {
+  return (
+    <ServicesProvider>
+      <RouterProvider router={router} />
+    </ServicesProvider>
+  );
+};
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+    <MainApp />
+  </React.StrictMode>
+);
