@@ -30,7 +30,7 @@ const mainTitleVariant = {
 
 type PopularTypes = {
   text: string;
-  iconName: React.ReactNode | unknown;
+  iconName: any;
 };
 
 type PopularServicesProps = {
