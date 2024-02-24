@@ -1,3 +1,4 @@
+import React from "react";
 import { motion } from "framer-motion";
 import ServicesButton from "../services-button";
 import CircularIcon from "../circular-icon";
@@ -29,7 +30,7 @@ const mainTitleVariant = {
 
 type PopularTypes = {
   text: string;
-  iconName: ReactNode | unknown;
+  iconName: React.ReactNode | unknown;
 };
 
 type PopularServicesProps = {

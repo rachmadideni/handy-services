@@ -1,14 +1,14 @@
 import { useEffect, useContext } from "react";
 import { useDebounceValue } from "usehooks-ts";
-import { motion } from "framer-motion";
+
 import { useNavigate } from "react-router-dom";
 
 import { ServicesContext, type ServiceContextType } from "@/provider/services";
 
 import Card from "@/components/card";
-import ServicesButton from "@/components/services-button";
+
 import GlassIcon from "@/components/icons/glass";
-import CircularIcon from "@/components/circular-icon";
+
 import TimeslotIcon from "@/components/icons/timeslot";
 import EuroIcon from "@/components/icons/euro";
 import MemberCreditIcon from "@/components/icons/member-credit";
@@ -19,20 +19,6 @@ import { paths } from "@/router";
 
 import MainTitle from "@/components/main-title";
 import PopularServices from "@/components/popular-services";
-
-// pop services variants
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      delayChildren: 0.5,
-      staggerChildren: 0.05,
-      staggerDirection: 1,
-      duration: 1.8,
-    },
-  },
-};
 
 const HomePage = () => {
   const { selectService, filterServices, filteredServices } = useContext(
