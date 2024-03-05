@@ -7,11 +7,11 @@ const options = {
   },
 };
 
-export default async function fetcher(baseUrl = apiUrl) {
+export default async function fetcher(baseUrl: string = apiUrl) {
   try {
     const result = await fetch(baseUrl, options);
     return await result.json();
   } catch (err) {
-    throw new Error(err);
+    console.log(err);
   }
 }

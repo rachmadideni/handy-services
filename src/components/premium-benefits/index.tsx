@@ -1,6 +1,4 @@
-import Card from "@/components/card";
 import CardBenefit from "../card-benefit";
-import CircularIcon from "@/components/circular-icon";
 import {
   PrebenSection,
   TitleWrapper,

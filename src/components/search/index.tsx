@@ -24,9 +24,14 @@ type filteredServicesProps = {
   category: string;
 };
 
+type availableCategoriesProps = {
+  category: string;
+  services: string[];
+};
+
 const Search = () => {
   const navigate = useNavigate();
-  const searchWrapperRef = useRef(null);
+  const searchWrapperRef = useRef<HTMLElement>(null);
 
   const [query, setQuery] = useState("");
   const [focused, setFocused] = useState(false);
@@ -46,18 +51,20 @@ const Search = () => {
     const matchedServices: any = [];
 
     if (availableServices) {
-      availableServices?.categories?.forEach((category: string) => {
-        const matchedCategoryServices = category?.services.filter(
-          (service: string) =>
-            service.toLowerCase().includes(searchTerm.toLowerCase())
-        );
+      availableServices?.categories?.forEach(
+        (category: availableCategoriesProps) => {
+          const matchedCategoryServices = category?.services.filter(
+            (service: string) =>
+              service.toLowerCase().includes(searchTerm.toLowerCase())
+          );
 
-        if (matchedCategoryServices.length > 0) {
-          matchedCategoryServices.forEach((service: string) => {
-            matchedServices.push({ service, category: category.category });
-          });
+          if (matchedCategoryServices.length > 0) {
+            matchedCategoryServices.forEach((service: string) => {
+              matchedServices.push({ service, category: category.category });
+            });
+          }
         }
-      });
+      );
       setFilteredServices(matchedServices);
     }
   };
@@ -71,10 +78,10 @@ const Search = () => {
     filterServices(query);
   }, [query, focused]);
 
-  const handleOutsideClick = (e) => {
+  const handleOutsideClick = (e: MouseEvent) => {
     if (
       searchWrapperRef.current &&
-      !searchWrapperRef.current.contains(e.target)
+      !searchWrapperRef.current.contains(e.target as Node)
     ) {
       setToUnfocused();
     }

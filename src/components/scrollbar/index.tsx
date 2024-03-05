@@ -30,7 +30,7 @@ type ScrollbarProps = {
 
 const Scrollbar = ({ children, ...otherProps }: ScrollbarProps) => {
   const renderThumb = () => <StyledThumb />;
-  const renderTrack = ({ style, ...props }) => <StyledTrack {...props} />;
+  const renderTrack = () => <StyledTrack />;
   return (
     <Scrollbars
       style={{
