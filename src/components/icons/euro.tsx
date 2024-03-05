@@ -1,21 +1,21 @@
 const EuroIcon = () => {
   return (
     <svg
-      width="26"
-      height="26"
-      viewBox="0 0 26 26"
+      width="30"
+      height="30"
+      viewBox="0 0 30 30"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_0_38)">
+      <g clipPath="url(#clip0_0_38)">
         <mask
           id="mask0_0_38"
           //   style="mask-type:luminance"
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
-          width="26"
-          height="26"
+          width="30"
+          height="30"
         >
           <path d="M0 7.62939e-05H25.9999V26H0V7.62939e-05Z" fill="white" />
         </mask>
@@ -28,7 +28,7 @@ const EuroIcon = () => {
       </g>
       <defs>
         <clipPath id="clip0_0_38">
-          <rect width="26" height="26" fill="white" />
+          <rect width="30" height="30" fill="white" />
         </clipPath>
       </defs>
     </svg>

@@ -1,9 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import ServicesProvider from "./provider/services.tsx";
+import ThemeProvider from "./provider/theme.tsx";
 import { RouterProvider } from "react-router-dom";
 import router from "./router";
-import "./index.css";
+
+import { GlobalStyle } from "./provider/theme.tsx";
 
 const MainApp = () => {
   return (
@@ -15,6 +17,9 @@ const MainApp = () => {
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <MainApp />
+    <ThemeProvider>
+      <GlobalStyle />
+      <MainApp />
+    </ThemeProvider>
   </React.StrictMode>
 );

@@ -12,7 +12,7 @@ const CloseIcon = (props: CloseIconProps) => {
       xmlns="http://www.w3.org/2000/svg"
       className={props.className}
     >
-      <g clip-path="url(#clip0_1_4)">
+      <g clipPath="url(#clip0_1_4)">
         <path
           fill-rule="evenodd"
           clip-rule="evenodd"
