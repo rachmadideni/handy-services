@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import ServicesButton from "../services-button";
 import CircularIcon from "../circular-icon";
+import { Wrapper, Title, ButtonsWrapper } from "./index.styled";
+import { paths } from "@/router";
 
 const variantContainer = {
   hidden: { opacity: 0 },
@@ -16,7 +19,7 @@ const variantContainer = {
 };
 
 const mainTitleVariant = {
-  initial: { y: -10, opacity: 0 },
+  initial: { y: -50, opacity: 0 },
   animate: {
     y: 10,
     opacity: 1,
@@ -38,31 +41,49 @@ type PopularServicesProps = {
 };
 
 const PopularServices = ({ mainTitle, items }: PopularServicesProps) => {
+  const navigate = useNavigate();
+  const MotionWrapper = motion(Wrapper);
+  const MotionButtonsWrapper = motion(ButtonsWrapper);
+  const MotionTitle = motion(Title);
+
   return (
-    <>
-      <motion.div
-        variants={mainTitleVariant}
-        className="flex flex-col w-full items-center"
+    <MotionWrapper variants={mainTitleVariant}>
+      <MotionTitle
+        initial={{
+          opacity: 0,
+        }}
+        animate={{
+          opacity: 1,
+          transition: {
+            delay: 0.3,
+            ease: "linear",
+            duration: 1,
+          },
+        }}
       >
-        <p className="font-koulen text-xl text-ebonyClay opacity-70">
-          {mainTitle}
-        </p>
-      </motion.div>
-      <motion.div
+        {mainTitle}
+      </MotionTitle>
+      <MotionButtonsWrapper
         variants={variantContainer}
         initial="hidden"
         animate="show"
-        className="flex flex-wrap justify-center gap-3 w-full mx-auto max-w-[500px]"
       >
         {items.map((service, index) => (
           <ServicesButton
             key={index}
             text={service.text}
             startAdornment={<CircularIcon icon={<service.iconName />} />}
+            onClick={() =>
+              navigate(paths.services, {
+                state: {
+                  service: service.text,
+                },
+              })
+            }
           />
         ))}
-      </motion.div>
-    </>
+      </MotionButtonsWrapper>
+    </MotionWrapper>
   );
 };
 
