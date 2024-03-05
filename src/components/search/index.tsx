@@ -31,7 +31,7 @@ type availableCategoriesProps = {
 
 const Search = () => {
   const navigate = useNavigate();
-  const searchWrapperRef = useRef<HTMLElement>(null);
+  const searchWrapperRef = useRef<HTMLDivElement>(null);
 
   const [query, setQuery] = useState("");
   const [focused, setFocused] = useState(false);
