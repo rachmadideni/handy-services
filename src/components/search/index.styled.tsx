@@ -2,7 +2,9 @@ import { forwardRef } from "react";
 import { styled } from "styled-components";
 import { SearchBarWrapperProps } from ".";
 
-const SearchBar = forwardRef((props, ref) => <div {...props} ref={ref} />);
+const SearchBar = forwardRef<HTMLDivElement, {}>((props, ref) => (
+  <div {...props} ref={ref} />
+));
 
 export const SearchBarWrapper = styled(SearchBar)<SearchBarWrapperProps>`
   display: flex;
