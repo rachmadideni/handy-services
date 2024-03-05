@@ -1,6 +1,6 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 import HomeLayout from "@/layouts";
-import HomePage from "@/pages/home";
+import HomePage from "@/pages/homepage";
 import ServicesPage from "@/pages/services";
 
 export const paths = {
@@ -14,6 +14,7 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <HomePage /> },
       { path: paths.services, element: <ServicesPage /> },
+      { path: "*", element: <Navigate to="/" /> },
     ],
   },
 ]);
