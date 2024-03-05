@@ -1,13 +1,13 @@
-import GlassIcon from "../components/icons/glass";
 import GardeningToolsetIcon from "../components/icons/gardening-toolset";
 import MobileStorageIcon from "../components/icons/mobile-storage";
 import StorageIcon from "../components/icons/storage";
 import HandymanIcon from "../components/icons/handyman";
+import CleanerToolsetIcon from "@/components/icons/cleaner-toolset";
 
 const POPULAR_SERVICES = [
   {
     text: "Domestic cleaning",
-    iconName: GlassIcon,
+    iconName: CleanerToolsetIcon,
   },
   {
     text: "Gardening",
