@@ -1,12 +1,18 @@
-import React, { createContext, useContext, useState, useMemo } from "react";
-import { SERVICES } from "../constants/popular-services";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useMemo,
+  useEffect,
+} from "react";
+
+import fetcher from "@/utils/fetcher";
 
 export type ServiceContextType = {
   selectedService: string;
   selectService: (val: string) => void;
-  filterServices: (query: string) => void;
-  filteredServices: string[];
-  availableServices: typeof SERVICES;
+  availableServices: Record<string, any>;
+  loading: boolean;
 };
 
 export const ServicesContext = createContext<ServiceContextType | null>(null);
@@ -19,40 +25,35 @@ type ServicesProviderProps = {
 
 const ServicesProvider = ({ children }: ServicesProviderProps) => {
   const [selectedService, setSelectedService] = useState<string>("");
-  const [filteredServices, setFilteredServices] = useState<string[]>([]);
-  const [availableServices, _] = useState(SERVICES);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [availableServices, setAvailableServices] = useState<
+    Record<string, any>
+  >({});
 
   const selectService = (val: string) => {
     setSelectedService(val);
   };
 
-  const filterServices = (query: string) => {
-    const matchingServices: string[] = [];
-
-    if (query === "") {
-      setFilteredServices([]);
-      return matchingServices;
-    }
-    for (const category of availableServices.categories) {
-      for (const service of category.services) {
-        if (service.toLowerCase().includes(query.toLowerCase())) {
-          matchingServices.push(service);
-        }
-      }
-    }
-
-    setFilteredServices(matchingServices);
+  const fetchServices = async () => {
+    try {
+      const response = await fetcher();
+      setAvailableServices(response);
+      setLoading(false);
+    } catch (err) {}
   };
+
+  useEffect(() => {
+    fetchServices();
+  }, []);
 
   const contextValue = useMemo(
     () => ({
       selectedService,
       selectService,
-      filteredServices,
       availableServices,
-      filterServices,
+      loading,
     }),
-    [selectedService, filteredServices]
+    [selectedService, fetchServices]
   );
 
   return (
